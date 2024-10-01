@@ -1,9 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { useSprite } from './useSprite'
-export { useSprite, loadImage } from './useSprite'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { useSprite } from './useSprite';
+export { useSprite, loadImage } from './useSprite';
 
-const noop = () => {}
+const noop = () => {};
 
 const propTypes = {
   className: PropTypes.string,
@@ -24,25 +24,25 @@ const propTypes = {
   wrapAfter: PropTypes.number,
   frame: PropTypes.number,
   reset: PropTypes.bool,
-}
+};
 
 export const SpriteAnimator = ({
-  startFrame,
+  startFrame = 0,
   sprite,
   width,
   height,
-  direction,
-  onError,
-  onLoad,
-  onEnd,
+  direction = 'horizontal',
+  onError = noop,
+  onLoad = noop,
+  onEnd = noop,
   frameCount,
-  fps,
-  shouldAnimate,
+  fps = 60,
+  shouldAnimate = true,
   stopLastFrame,
   reset,
   frame,
   className,
-  scale,
+  scale = 1,
   wrapAfter,
 }) => {
   const style = useSprite({
@@ -62,20 +62,9 @@ export const SpriteAnimator = ({
     frame,
     scale,
     wrapAfter,
-  })
+  });
 
-  return <div className={className} style={style} />
-}
+  return <div className={className} style={style} />;
+};
 
-SpriteAnimator.propTypes = propTypes
-SpriteAnimator.defaultProps = {
-  scale: 1,
-  direction: 'horizontal',
-  shouldAnimate: true,
-  loop: true,
-  startFrame: 0,
-  fps: 60,
-  onError: noop,
-  onLoad: noop,
-  onEnd: noop,
-}
+SpriteAnimator.propTypes = propTypes;
